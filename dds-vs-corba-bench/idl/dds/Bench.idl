@@ -1,0 +1,8 @@
+// Benchmark payload for DDS. Mirrors Bench::Payload in idl/corba/Bench.idl
+// so both middlewares move exactly the same data.
+module Bench {
+  struct Payload {
+    unsigned long long seq;   // UINT64_MAX = "stop" sentinel
+    sequence<octet> data;
+  };
+};

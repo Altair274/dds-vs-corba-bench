@@ -1,0 +1,13 @@
+// Synthetic "radio status" type used by the hello-world example.
+// Each radio_id is a separate DDS *instance* (keyed), so readers keep
+// the latest state per radio, not just a stream of messages.
+module Demo {
+  enum RadioMode { MODE_IDLE, MODE_RX, MODE_TX };
+
+  struct RadioStatus {
+    @key long radio_id;
+    unsigned long seq;
+    float rssi_dbm;
+    RadioMode mode;
+  };
+};

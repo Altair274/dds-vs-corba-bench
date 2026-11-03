@@ -1,0 +1,18 @@
+// Benchmark interface for CORBA. Same payload as idl/dds/Bench.idl.
+module Bench {
+  typedef sequence<octet> Octets;
+
+  struct Payload {
+    unsigned long long seq;
+    Octets data;
+  };
+
+  interface Echo {
+    // Synchronous round trip: the classic CORBA request/reply.
+    // (IDL names are case-insensitive, so it can't be called "echo".)
+    Payload roundtrip(in Payload p);
+
+    // Lets the client stop the server cleanly at the end of a run.
+    oneway void shutdown();
+  };
+};
